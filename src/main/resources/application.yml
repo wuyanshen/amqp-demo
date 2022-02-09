@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: rabbitmq-demo
+
+  rabbitmq:
+    port: 5672
+    host: ENC(9/liGPfZ74nHCMM/2fg6rYWIUmnDFQ8b)
+    virtual-host: /
+    username: ENC(V/eLs26nsJh0cC4HM+TWWA==)
+    password: ENC(VU28CKlvrj/uPh9YrEmcoD8e1UqpV6ns)
