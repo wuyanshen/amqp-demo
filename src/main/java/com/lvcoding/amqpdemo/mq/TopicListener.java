@@ -1,5 +1,8 @@
 package com.lvcoding.amqpdemo.mq;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lvcoding.amqpdemo.domain.User;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
@@ -33,8 +36,9 @@ public class TopicListener {
                     key = {"order.#", "product.#", "user.*"}
             )
     })
-    public void topic2(String msg) {
-        System.out.println("topic2 = " + msg);
+    public void topic2(User user) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("topic2 = " + objectMapper.writeValueAsString(user));
     }
 
 }

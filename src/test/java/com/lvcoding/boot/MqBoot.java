@@ -1,6 +1,7 @@
 package com.lvcoding.boot;
 
 import com.lvcoding.amqpdemo.AmqpDemoApplication;
+import com.lvcoding.amqpdemo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class MqBoot {
     // 订阅topic模式 动态路由
     @Test
     public void topic() {
-        rabbitTemplate.convertAndSend("topics", "user.aa.bb.cc", "topic模型");
+        User user = new User();
+        user.setName("测试");
+        user.setAge(22);
+        rabbitTemplate.convertAndSend("topics", "order.aa.bb.cc", user);
     }
+
 }
